@@ -21,6 +21,10 @@ namespace nt {
     {
       return logo_;
     }
+    sf::Texture& getEye()
+    {
+      return eye_;
+    }
     sf::Color& getColor()
     {
       return bgColor_;
@@ -32,6 +36,7 @@ namespace nt {
     sf::Texture background_;
     sf::Texture icon_;
     sf::Texture logo_;
+    sf::Texture eye_;
     sf::Color bgColor_;
     bool emagged_;
   };

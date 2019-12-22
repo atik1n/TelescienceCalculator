@@ -43,6 +43,11 @@ namespace nt {
       "resources/uiTitleFluff.png",
       "resources/uiTitleFluff-Syndicate.png"
   };
+  const std::string eye[] = {
+      "resources/eyeNT.png",
+      "resources/eyeSY.png"
+  };
+
   const std::string exodus = "resources/nanomap_exodus_1.png";
   const std::string ankaCoder = "resources/AnkaCoder-b.ttf";
 }

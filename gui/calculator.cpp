@@ -26,5 +26,6 @@ void nt::NanoUI::update()
   sf::Image icon = icon_.copyToImage();
   window_.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
   logo_.loadFromFile(nt::logo[emagged_]);
+  eye_.loadFromFile(nt::eye[emagged_]);
   bgColor_ = nt::bgColor[emagged_];
 }

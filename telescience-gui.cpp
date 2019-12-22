@@ -17,7 +17,7 @@ int main()
   sf::Font anka;
   anka.loadFromFile(nt::ankaCoder);
   sf::Text ntText("NanoTrasen Telescience Calculator", anka);
-  ntText.setPosition(8, 3);
+  ntText.setPosition(42, 3);
   ntText.setCharacterSize(18);
   ntText.setFillColor(nt::fgColor);
   queue.push(1, ntText);
@@ -25,6 +25,10 @@ int main()
   sf::Sprite ntLogo(nanoUI.getLogo());
   ntLogo.setPosition(755, 3);
   queue.push(2, ntLogo);
+
+  sf::Sprite ntEye(nanoUI.getEye());
+  ntEye.setPosition(10, 3);
+  queue.push(2, ntEye);
 
   sf::Sprite ntBg(nanoUI.getBackground());
   queue.push(-1, ntBg);
