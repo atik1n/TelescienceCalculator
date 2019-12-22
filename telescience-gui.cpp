@@ -6,7 +6,11 @@ char emagged = 0;
 
 int main()
 {
-  sf::RenderWindow window(sf::VideoMode(800, 650), "NanoTrasen Telescience calculator");
+  sf::RenderWindow window(
+      sf::VideoMode(800, 650),
+      "NanoTrasen Telescience calculator",
+      sf::Style::Titlebar | sf::Style::Close
+  );
   nt::NanoUI nanoUI(window);
   nt::DrawQueue queue(nanoUI.getColor());
 

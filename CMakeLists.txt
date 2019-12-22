@@ -4,7 +4,9 @@ project(course_console)
 set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake-modules")
+if(WIN32)
 set(SFML_ROOT M:/Programming/ICST/CPP/SFML-2.5.1)
+endif()
 set(TELE_CPPS telescience/calculator.cpp telescience/calibrator.cpp telescience/data.cpp)
 set(GUI_CPPS gui/helpers.cpp gui/calculator.cpp)
 
