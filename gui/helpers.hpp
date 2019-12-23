@@ -24,7 +24,7 @@ namespace nt {
     sf::Color& color_;
   };
 
-  int stringToInt(const std::string& string);
+  short int stringToInt(const std::string& string);
 
   const sf::Color bgColor[] = {
       {39, 39, 39},

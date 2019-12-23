@@ -12,7 +12,7 @@ int main()
   ExperimentData experimentFirst(telepad, destinationFirst, settingsFirst);
   ExperimentData experimentSecond(telepad, destinationSecond, settingsSecond);
 
-  calibration_t delta = Calibrator(experimentFirst, experimentSecond, "suka")();
+  calibration_t delta = Calibrator(experimentFirst, experimentSecond, "console")();
   std::cout << "name:  " << delta.name << " | "
             << "phi:   " << delta.phi << " | "
             << "theta: " << delta.theta << " | "

@@ -1,4 +1,4 @@
-#ifndef COURSE_CONSOLE_NANOUI_HPP
+#ifndef COURSE_CONSOLE_CALCULATOR_HPP
 #define COURSE_CONSOLE_CALCULATOR_HPP
 #include "calibrator.hpp"
 
