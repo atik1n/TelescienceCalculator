@@ -34,6 +34,8 @@ namespace nt {
   const struct {
     sf::Color label = {233, 193, 131};
     sf::Color activeOutline = {64, 98, 138};
+    sf::Color textBox = {64, 98, 138};
+    sf::Color textBoxActive = {94, 128, 168};
   } colors;
 
   const std::string icon[] = {

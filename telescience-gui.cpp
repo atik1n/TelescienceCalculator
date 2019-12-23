@@ -1,8 +1,8 @@
+#include <list>
 #include "gui/exodusMap.hpp"
 #include "gui/helpers.hpp"
 #include "gui/nanoUI.hpp"
 #include <SFML/Graphics.hpp>
-#include <gui/helpers.hpp>
 
 char emagged = 0;
 
@@ -68,11 +68,71 @@ int main()
   telepadYBox.setString("133");
   queue.push(4, telepadYBox.getDrawable());
 
+  nt::Label statusLabel;
+  statusLabel.setPosition(20, 400);
+  statusLabel.setSize(0, 16);
+  statusLabel.setString("Please, enter calibration data.");
+  statusLabel.setLabelColor(sf::Color::Red);
+  queue.push(4, statusLabel.getDrawable());
+
+  std::list<nt::TextBox<int>*> textBoxes;
+  textBoxes.push_back(&telepadXBox);
+  textBoxes.push_back(&telepadYBox);
+  nt::TextBox<int>* activeBox = nullptr;
+
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
       if (event.type == sf::Event::Closed) {
         window.close();
+      }
+
+      if (event.type == sf::Event::MouseButtonPressed) {
+        auto mouse_pos = sf::Mouse::getPosition(window);
+        auto translated_pos = window.mapPixelToCoords(mouse_pos);
+
+        for (auto textBox : textBoxes) {
+          auto draw = dynamic_cast<sf::RectangleShape*>(&textBox->getDrawable());
+          textBox->active = draw->getGlobalBounds().contains(translated_pos);
+          if (textBox->active) {
+            activeBox = textBox;
+          }
+          textBox->render();
+        }
+      }
+
+      if ((event.type == sf::Event::TextEntered) && (activeBox != nullptr))
+      {
+        if(isdigit(event.text.unicode))
+        {
+          std::string string = activeBox->getString();
+          string += event.text.unicode;
+          activeBox->setString(string);
+        }
+        //erase on backspace press     !!does not work properly?what is wrong with it??
+        if(event.text.unicode == '\b')
+        {
+          std::string string = activeBox->getString();
+          if (string.size() != 0) {
+            string = string.substr(0, string.size() - 1);
+            activeBox->setString(string);
+          }
+        }
+
+        bool calibrated = true;
+        try {
+          activeBox->loadValue(nt::stringToInt);
+        } catch (...) {
+          calibrated = false;
+        }
+
+        if (calibrated) {
+          statusLabel.setLabelColor(sf::Color::Green);
+          statusLabel.setString("Calibration done!");
+        } else {
+          statusLabel.setLabelColor(sf::Color::Red);
+          statusLabel.setString("Please, enter calibration data.");
+        }
       }
     }
 

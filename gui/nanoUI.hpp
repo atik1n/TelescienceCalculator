@@ -54,9 +54,9 @@ namespace nt {
     {
       return label_;
     }
-    std::string getString() const
+    virtual std::string getString() const
     {
-      return label_.getString();
+      return string_;
     }
     virtual void setString(const std::string& string)
     {
@@ -97,8 +97,9 @@ namespace nt {
     }
     void setSize(int, int) override;
     void loadValue(std::function<T(const std::string&)>);
-  private:
     void render();
+    bool active;
+  private:
     sf::RenderTexture renderTarget_;
     sf::RectangleShape textBox_;
     T& valueRef_;
@@ -108,6 +109,7 @@ namespace nt {
 template <typename T>
 nt::TextBox<T>::TextBox(T& value) :
     valueRef_(value),
+    active(false),
     Label()
 {
   int w = 120;
@@ -125,7 +127,8 @@ nt::TextBox<T>::TextBox(T& value) :
 template <typename T>
 void nt::TextBox<T>::render()
 {
-  renderTarget_.clear(nt::colors.activeOutline);
+  sf::Color fill = active ? nt::colors.textBoxActive : nt::colors.textBox;
+  renderTarget_.clear(fill);
   renderTarget_.draw(label_);
   textBox_.setTexture(&renderTarget_.getTexture(), true);
 }
