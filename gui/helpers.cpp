@@ -34,3 +34,8 @@ void nt::DrawQueue::push(char z, sf::Drawable& object)
 {
   queue_.insert(std::make_pair(z, &object));
 }
+
+int nt::stringToInt(const std::string& string)
+{
+  return std::stoi(string);
+}

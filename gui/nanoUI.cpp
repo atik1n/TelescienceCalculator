@@ -1,4 +1,5 @@
 #include "nanoUI.hpp"
+#include "helpers.hpp"
 
 nt::NanoUI::NanoUI(sf::RenderWindow& window) :
     window_(window),
@@ -28,4 +29,19 @@ void nt::NanoUI::update()
   logo_.loadFromFile(nt::logo[emagged_]);
   eye_.loadFromFile(nt::eye[emagged_]);
   bgColor_ = nt::bgColor[emagged_];
+}
+
+
+nt::Label::Label()
+{
+  font_.loadFromFile(nt::ankaCoder[0]);
+  label_.setFont(font_);
+  label_.setFillColor(nt::colors.label);
+  label_.setCharacterSize(24);
+}
+
+void nt::Label::setBold(bool bold)
+{
+  font_.loadFromFile(nt::ankaCoder[bold]);
+  label_.setFont(font_);
 }

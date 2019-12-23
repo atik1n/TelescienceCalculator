@@ -40,7 +40,33 @@ int main()
   map.getMap().setSize(sf::Vector2f(350, 350));
   map.getMap().setPosition(15, 45);
   queue.push(3, map.getMap());
-  map.setPoint(129, 129);
+
+  nt::Label calibrationLabel;
+  calibrationLabel.setPosition(380, 40);
+  calibrationLabel.setSize(0, 20);
+  calibrationLabel.setString("Calibration");
+  calibrationLabel.setBold(true);
+  queue.push(4, calibrationLabel.getDrawable());
+
+  nt::Label telepadLabel;
+  telepadLabel.setPosition(400, 65);
+  telepadLabel.setSize(0, 16);
+  telepadLabel.setString("Telepad coordinates");
+  queue.push(4, telepadLabel.getDrawable());
+
+  int telepadX;
+  nt::TextBox<int> telepadXBox(telepadX);
+  telepadXBox.setPosition(400, 90);
+  telepadXBox.setSize(180, 16);
+  telepadXBox.setString("170");
+  queue.push(4, telepadXBox.getDrawable());
+
+  int telepadY;
+  nt::TextBox<int> telepadYBox(telepadY);
+  telepadYBox.setPosition(590, 90);
+  telepadYBox.setSize(180, 16);
+  telepadYBox.setString("133");
+  queue.push(4, telepadYBox.getDrawable());
 
   while (window.isOpen()) {
     sf::Event event;
