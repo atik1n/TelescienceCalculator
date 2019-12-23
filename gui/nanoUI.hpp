@@ -1,5 +1,5 @@
-#ifndef COURSE_CONSOLE_CALCULATOR_HPP
-#define COURSE_CONSOLE_CALCULATOR_HPP
+#ifndef COURSE_CONSOLE_NANOUI_HPP
+#define COURSE_CONSOLE_NANOUI_HPP
 
 #include "helpers.hpp"
 
@@ -42,4 +42,4 @@ namespace nt {
   };
 }
 
-#endif //COURSE_CONSOLE_CALCULATOR_HPP
+#endif //COURSE_CONSOLE_NANOUI_HPP

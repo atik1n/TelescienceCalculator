@@ -8,7 +8,7 @@ if(WIN32)
 set(SFML_ROOT M:/Programming/ICST/CPP/SFML-2.5.1)
 endif()
 set(TELE_CPPS telescience/calculator.cpp telescience/calibrator.cpp telescience/data.cpp)
-set(GUI_CPPS gui/helpers.cpp gui/calculator.cpp)
+set(GUI_CPPS gui/helpers.cpp gui/nanoUI.cpp gui/exodusMap.cpp)
 
 find_package(SFML REQUIRED system window graphics network audio)
 

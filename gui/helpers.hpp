@@ -29,7 +29,10 @@ namespace nt {
       {143, 20, 20}
   };
 
-  const sf::Color fgColor = {150, 150, 150};
+  const struct {
+    sf::Color label = {233, 193, 131};
+    sf::Color activeOutline = {64, 98, 138};
+  } colors;
 
   const std::string icon[] = {
       "resources/iconNT.png",
@@ -49,7 +52,11 @@ namespace nt {
   };
 
   const std::string exodus = "resources/nanomap_exodus_1.png";
-  const std::string ankaCoder = "resources/AnkaCoder-b.ttf";
+
+  const std::string ankaCoder[] = {
+      "resources/AnkaCoder-r.ttf",
+      "resources/AnkaCoder-b.ttf"
+  };
 }
 
 #endif //COURSE_CONSOLE_DEFINES_HPP

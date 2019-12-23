@@ -1,4 +1,4 @@
-#ifndef COURSE_CONSOLE_CALCULATOR_HPP
+#ifndef COURSE_CONSOLE_NANOUI_HPP
 #define COURSE_CONSOLE_CALCULATOR_HPP
 #include "calibrator.hpp"
 
@@ -12,4 +12,4 @@ private:
   calibration_t delta_;
 };
 
-#endif //COURSE_CONSOLE_CALCULATOR_HPP
+#endif //COURSE_CONSOLE_NANOUI_HPP
