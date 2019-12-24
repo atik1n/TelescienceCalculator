@@ -40,6 +40,7 @@ int main()
   nt::ExodusMap map;
   map.getMap().setSize(sf::Vector2f(350, 350));
   map.getMap().setPosition(15, 45);
+  map.setPointSize(7);
   queue.push(3, map.getMap());
 
   nt::Label calibrationLabel;
@@ -227,6 +228,9 @@ int main()
   textBoxes.push_back(&targetYBox);
   nt::TextBox<short int>* activeBox = nullptr;
 
+  queue.draw(window);
+  int uplink = 0;
+
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -246,12 +250,21 @@ int main()
           }
           textBox->render();
         }
+
+        queue.draw(window);
       }
 
       if ((event.type == sf::Event::TextEntered) && (activeBox != nullptr))
       {
-        if(event.text.unicode == 's') {
+        if (event.text.unicode == nt::uplinkPass[uplink]) {
+          uplink++;
+        } else {
+          uplink = 0;
+        }
+
+        if (uplink == nt::uplinkPassLength) {
           nanoUI.emag();
+          uplink = 0;
         }
 
         if(isdigit(event.text.unicode))
@@ -324,10 +337,11 @@ int main()
           elevationResultLabel.setString("Elevation: ???");
           powerResultLabel.setString("Power: ???");
         }
+
+        queue.draw(window);
       }
     }
-
-    queue.draw(window);
+    sf::sleep(sf::microseconds(10000));
   }
 
   return 0;

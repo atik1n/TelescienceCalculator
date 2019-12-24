@@ -41,7 +41,7 @@ void nt::ExodusMap::render()
   sf::RectangleShape point(sf::Vector2f(2 * pointSize_, 2 * pointSize_));
   int x = (pointPos_.x - 1) * 4 - pointSize_ + 1;
   int y = (256 - pointPos_.y) * 4 - pointSize_ + 1;
-  point.setFillColor(nt::colors.label);
+  point.setFillColor(nt::colors.pointColor);
   point.setOutlineColor(nt::colors.activeOutline);
   point.setOutlineThickness(2);
   point.setPosition(x, y);

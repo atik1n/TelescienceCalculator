@@ -36,6 +36,7 @@ namespace nt {
     sf::Color activeOutline = {64, 98, 138};
     sf::Color textBox = {64, 98, 138};
     sf::Color textBoxActive = {94, 128, 168};
+    sf::Color pointColor = sf::Color::Magenta;
   } colors;
 
   const std::string icon[] = {
@@ -61,6 +62,9 @@ namespace nt {
       "resources/AnkaCoder-r.ttf",
       "resources/AnkaCoder-b.ttf"
   };
+
+  const char uplinkPass[] = "fuk nt";
+  const int uplinkPassLength = 6;
 }
 
 #endif //COURSE_CONSOLE_DEFINES_HPP
