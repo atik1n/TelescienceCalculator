@@ -4,9 +4,12 @@ project(course_console)
 set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake-modules")
+set(EXECUTABLE_OUTPUT_PATH ./bin)
+
 if(WIN32)
-set(SFML_ROOT M:/Programming/ICST/CPP/SFML-2.5.1)
+    set(SFML_ROOT M:/Programming/ICST/CPP/SFML-2.5.1)
 endif()
+
 set(TELE_CPPS telescience/calculator.cpp telescience/calibrator.cpp telescience/data.cpp)
 set(GUI_CPPS gui/helpers.cpp gui/nanoUI.cpp gui/exodusMap.cpp)
 

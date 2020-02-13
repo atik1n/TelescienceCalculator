@@ -57,15 +57,15 @@ int main()
   telepadLabel.setString("Telepad coordinates");
   queue.push(4, telepadLabel.getDrawable());
 
-  short int telepadX;
-  nt::TextBox<short int> telepadXBox(telepadX);
+  int telepadX = 0;
+  nt::TextBox<int> telepadXBox(telepadX);
   telepadXBox.setPosition(400, 90);
   telepadXBox.setSize(180, 16);
   telepadXBox.setString("170");
   queue.push(4, telepadXBox.getDrawable());
 
-  short int telepadY;
-  nt::TextBox<short int> telepadYBox(telepadY);
+  int telepadY = 0;
+  nt::TextBox<int> telepadYBox(telepadY);
   telepadYBox.setPosition(590, 90);
   telepadYBox.setSize(180, 16);
   telepadYBox.setString("133");
@@ -78,15 +78,15 @@ int main()
   experiment1Label.setString("Experiment #1 coordinates");
   queue.push(4, experiment1Label.getDrawable());
 
-  short int experiment1X;
-  nt::TextBox<short int> experiment1XBox(experiment1X);
+  int experiment1X = 0;
+  nt::TextBox<int> experiment1XBox(experiment1X);
   experiment1XBox.setPosition(400, 150);
   experiment1XBox.setSize(180, 16);
   experiment1XBox.setString(std::string());
   queue.push(4, experiment1XBox.getDrawable());
 
-  short int experiment1Y;
-  nt::TextBox<short int> experiment1YBox(experiment1Y);
+  int experiment1Y = 0;
+  nt::TextBox<int> experiment1YBox(experiment1Y);
   experiment1YBox.setPosition(590, 150);
   experiment1YBox.setSize(180, 16);
   experiment1YBox.setString(std::string());
@@ -99,15 +99,15 @@ int main()
   experiment2Label.setString("Experiment #2 coordinates");
   queue.push(4, experiment2Label.getDrawable());
 
-  short int experiment2X;
-  nt::TextBox<short int> experiment2XBox(experiment2X);
+  int experiment2X = 0;
+  nt::TextBox<int> experiment2XBox(experiment2X);
   experiment2XBox.setPosition(400, 210);
   experiment2XBox.setSize(180, 16);
   experiment2XBox.setString(std::string());
   queue.push(4, experiment2XBox.getDrawable());
 
-  short int experiment2Y;
-  nt::TextBox<short int> experiment2YBox(experiment2Y);
+  int experiment2Y = 0;
+  nt::TextBox<int> experiment2YBox(experiment2Y);
   experiment2YBox.setPosition(590, 210);
   experiment2YBox.setSize(180, 16);
   experiment2YBox.setString(std::string());
@@ -120,8 +120,8 @@ int main()
   bearingLabel.setString("Bearing");
   queue.push(4, bearingLabel.getDrawable());
 
-  short int bearing;
-  nt::TextBox<short int> bearingBox(bearing);
+  int bearing = 0;
+  nt::TextBox<int> bearingBox(bearing);
   bearingBox.setPosition(400, 270);
   bearingBox.setSize(180, 16);
   bearingBox.setString(std::string());
@@ -133,8 +133,8 @@ int main()
   elevationLabel.setString("Elevation");
   queue.push(4, elevationLabel.getDrawable());
 
-  short int elevation;
-  nt::TextBox<short int> elevationBox(elevation);
+  int elevation = 0;
+  nt::TextBox<int> elevationBox(elevation);
   elevationBox.setPosition(590, 270);
   elevationBox.setSize(180, 16);
   elevationBox.setString(std::string());
@@ -147,8 +147,8 @@ int main()
   power1Label.setString("Power #1");
   queue.push(4, power1Label.getDrawable());
 
-  short int power1;
-  nt::TextBox<short int> power1Box(power1);
+  int power1 = 0;
+  nt::TextBox<int> power1Box(power1);
   power1Box.setPosition(400, 330);
   power1Box.setSize(180, 16);
   power1Box.setString(std::string());
@@ -160,8 +160,8 @@ int main()
   power2Label.setString("Power #2");
   queue.push(4, power2Label.getDrawable());
 
-  short int power2;
-  nt::TextBox<short int> power2Box(power2);
+  int power2 = 0;
+  nt::TextBox<int> power2Box(power2);
   power2Box.setPosition(590, 330);
   power2Box.setSize(180, 16);
   power2Box.setString(std::string());
@@ -181,15 +181,15 @@ int main()
   targetLabel.setString("Target coordinates");
   queue.push(4, targetLabel.getDrawable());
 
-  short int targetX;
-  nt::TextBox<short int> targetXBox(targetX);
+  int targetX = 0;
+  nt::TextBox<int> targetXBox(targetX);
   targetXBox.setPosition(20, 455);
   targetXBox.setSize(180, 16);
   targetXBox.setString(std::string());
   queue.push(4, targetXBox.getDrawable());
 
-  short int targetY;
-  nt::TextBox<short int> targetYBox(targetY);
+  int targetY = 0;
+  nt::TextBox<int> targetYBox(targetY);
   targetYBox.setPosition(210, 455);
   targetYBox.setSize(180, 16);
   targetYBox.setString(std::string());
@@ -213,7 +213,7 @@ int main()
   powerResultLabel.setString("Power: ???");
   queue.push(4, powerResultLabel.getDrawable());
 
-  std::list<nt::TextBox<short int>*> textBoxes;
+  std::list<nt::TextBox<int>*> textBoxes;
   textBoxes.push_back(&telepadXBox);
   textBoxes.push_back(&telepadYBox);
   textBoxes.push_back(&experiment1XBox);
@@ -226,7 +226,7 @@ int main()
   textBoxes.push_back(&power2Box);
   textBoxes.push_back(&targetXBox);
   textBoxes.push_back(&targetYBox);
-  nt::TextBox<short int>* activeBox = nullptr;
+  nt::TextBox<int>* activeBox = nullptr;
 
   queue.draw(window);
   int uplink = 0;
@@ -277,8 +277,8 @@ int main()
         if(event.text.unicode == '\b')
         {
           std::string string = activeBox->getString();
-          if (string.size() != 0) {
-            string = string.substr(0, string.size() - 1);
+          if (!string.empty()) {
+            string.pop_back();
             activeBox->setString(string);
           }
         }
@@ -288,7 +288,7 @@ int main()
           for (auto textBox : textBoxes) {
             textBox->loadValue(nt::stringToInt);
           }
-        } catch (...) {
+        } catch (std::invalid_argument& e) {
           calibrated = false;
         }
 
@@ -323,7 +323,7 @@ int main()
             powerResultLabel.setString(powerStr);
 
             map.setPoint(targetX, targetY);
-          } catch (std::exception& e) {
+          } catch (std::runtime_error& e) {
             statusLabel.setLabelColor(sf::Color::Red);
             statusLabel.setString(e.what());
             bearingResultLabel.setString("Bearing: ?%4#22");
@@ -341,7 +341,7 @@ int main()
         queue.draw(window);
       }
     }
-    sf::sleep(sf::microseconds(10000));
+    //sf::sleep(sf::microseconds(10000));
   }
 
   return 0;

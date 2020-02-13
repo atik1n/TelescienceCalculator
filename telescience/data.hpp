@@ -7,8 +7,8 @@
 // TYPES
 struct point_t
 {
-  short int x;
-  short int y;
+  int x;
+  int y;
 };
 
 const std::vector<int> telepadPowers = {
